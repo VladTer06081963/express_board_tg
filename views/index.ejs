@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пример страницы</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var socket = io();
+        socket.on('bot message', function(msg) {
+          var li = document.createElement("li");
+          li.textContent = msg;
+          document.getElementById("messages").appendChild(li);
+        });
+      });
+    </script>
+</head>
+<body>
+    <h1>Данные с сервера</h1>
+    <ul id="messages">
+        <% data.forEach(function(item){ %>
+            <li><%= item %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
+
